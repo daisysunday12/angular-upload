@@ -1,0 +1,37 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="login-wrap p-4 p-md-5">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-user"></span>
+          </div>
+          <h3 class="text-center mb-4">Update Data Karyawan?</h3>
+          <form [formGroup]="nikForm" (ngSubmit)="createNik(nikForm.value)" class="login-form">
+            <div class="form-group">
+              <input type="text" formControlName="nik" class="form-control rounded-left"
+                placeholder="Search by NIK (Nomor Induk Karyawan)" required autofocus autocomplete="off" id="name"
+                aria-describedby="name" [ngClass]="{
+                  'is-invalid': nikForm.controls['nik'].errors && nikForm.controls['nik'].nik,
+                  'is-valid': !nikForm.controls['nik'].errors 
+                }" />
+            </div>
+            <div class="mt-2 alert alert-danger" role="alert"
+              *ngIf="nikForm.controls['nik'].errors  && nikForm.controls['nik'].nik">
+              <span *ngIf='nikForm.controls["nik"].errors["required"]'>NIK is required.</span>
+              <span *ngIf="nikForm.controls['nik'].errors['minlength']">NIK is must contains min 3
+                char length</span>
+              <span *ngIf="nikForm.controls['nik'].errors['maxlength']">NIK is must contains max
+                100 char length
+              </span>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Search Data Karyawan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-data-table></app-data-table>

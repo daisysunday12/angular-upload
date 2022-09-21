@@ -1,0 +1,72 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="login-wrap p-4 p-md-5">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-user"></span>
+          </div>
+          <h3 class="text-center mb-4">Perbarui Data <br> A.N {{pekerjaanDetails.nama}}
+            ({{pekerjaanDetails.nik}})</h3>
+          <form [formGroup]="kandidatForm" (ngSubmit)="createKandidat(kandidatForm.value)" class="login-form">
+            <div class="form-group">
+              <label for="">No. Whatsapp</label>
+              <input type="text" formControlName="no_hp" class="form-control rounded-left" placeholder="62812xxxxxx"
+                required autofocus autocomplete="off" id="name" aria-describedby="name" [ngClass]="{
+                  'is-invalid': kandidatForm.controls['no_hp'].errors && kandidatForm.controls['no_hp'].touched,
+                  'is-valid': !kandidatForm.controls['no_hp'].errors 
+                }" />
+            </div>
+            <div class="mt-2 alert alert-danger" role="alert"
+              *ngIf="kandidatForm.controls['no_hp'].errors  && kandidatForm.controls['no_hp'].touched">
+              <span *ngIf='kandidatForm.controls["no_hp"].errors["required"]'>No Whatsapp is required.</span>
+              <span *ngIf="kandidatForm.controls['no_hp'].errors['minlength']">No Whatsapp is must contains min 3
+                char length</span>
+              <span *ngIf="kandidatForm.controls['no_hp'].errors['maxlength']">No Whatsapp is must contains max
+                100 char length
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="">No. Telp</label>
+              <input type="text" formControlName="no_telp" class="form-control rounded-left" placeholder="62812xxxxxx"
+                required autofocus autocomplete="off" id="name" aria-describedby="name" [ngClass]="{
+                  'is-invalid': kandidatForm.controls['no_telp'].errors && kandidatForm.controls['no_telp'].touched,
+                  'is-valid': !kandidatForm.controls['no_telp'].errors 
+                }" />
+            </div>
+            <div class="mt-2 alert alert-danger" role="alert"
+              *ngIf="kandidatForm.controls['no_telp'].errors  && kandidatForm.controls['no_telp'].touched">
+              <span *ngIf='kandidatForm.controls["no_telp"].errors["required"]'>No Telp is required.</span>
+              <span *ngIf="kandidatForm.controls['no_telp'].errors['minlength']">No Telp is must contains min 3
+                char length</span>
+              <span *ngIf="kandidatForm.controls['no_telp'].errors['maxlength']">No Telp is must contains max
+                100 char length
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="">Email Citra Borneo</label>
+              <input type="text" formControlName="email" class="form-control rounded-left"
+                placeholder="Search by NIK (Nomor Induk Karyawan)" required autofocus autocomplete="off" id="name"
+                aria-describedby="name" [ngClass]="{
+                  'is-invalid': kandidatForm.controls['email'].errors && kandidatForm.controls['email'].touched,
+                  'is-valid': !kandidatForm.controls['email'].errors 
+                }" />
+            </div>
+            <div class="mt-2 alert alert-danger" role="alert"
+              *ngIf="kandidatForm.controls['email'].errors  && kandidatForm.controls['email'].touched">
+              <span *ngIf='kandidatForm.controls["email"].errors["required"]'>Email is required.</span>
+              <span *ngIf="kandidatForm.controls['email'].errors['minlength']">Email is must contains min 3
+                char length</span>
+              <span *ngIf="kandidatForm.controls['email'].errors['maxlength']">Email is must contains max
+                100 char length
+              </span>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Perbarui Data</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
