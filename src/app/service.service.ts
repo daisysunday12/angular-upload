@@ -27,4 +27,8 @@ export class ServiceService {
     const url = environment.API_EndPoint + 'update.php?id=' + params;
     return this.httpClient.post<any>(url, data).pipe(map((data) => data));
   }
+  uploadKaryawan(data: any): Observable<any> {
+    const url = environment.API_EndPoint + 'upload.php';
+    return this.httpClient.post<any>(url, data).pipe(map((data) => data));
+  }
 }

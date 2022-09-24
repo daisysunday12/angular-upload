@@ -35,34 +35,24 @@ export class UploadDataComponent implements OnInit {
     }
   }
   uploadFile() {
-    // let id = '';
-    // if (this.activatedRouter.snapshot.params['id']) {
-    //   id = this.activatedRouter.snapshot.params['id'];
-    // }
-    // const uploadData = new FormData;
-    // // console.log("data image", this.selectedFile);
-    // uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    // this.serviceService.uploadImageKandidat(this.activatedRouter.snapshot.params['id'], uploadData).subscribe(res => {
-    //   if (res.msg === 'success') {
-    //     this.navigateTo('/uploadfile-pekerjaan/' + id)
-    //     Swal.fire(
-    //       'Success!',
-    //       'Your file has been update.',
-    //       'success',
-    //     )
-    //   } else {
-    //     Swal.fire(
-    //       'Failed!',
-    //       'Your file has been update.',
-    //       'error',
-    //     )
-    //   }
-    // })
-    // Swal.fire(
-    //   'Failed!',
-    //   'Your file has been error.',
-    //   'error',
-    // )
+    const uploadData = new FormData;
+    uploadData.append('file', this.selectedFile, this.selectedFile.name);
+    this.serviceService.uploadKaryawan(uploadData).subscribe(res => {
+      if (res.result === 'success') {
+        location.reload();
+        Swal.fire(
+          'Success!',
+          'Your file has been update.',
+          'success',
+        )
+      } else {
+        Swal.fire(
+          'Failed!',
+          'Your file has been update.',
+          'error',
+        )
+      }
+    })
   }
   navigateTo(route: any) {
     this.router.navigate([route])
